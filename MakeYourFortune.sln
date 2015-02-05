@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MakeYourFortune", "MakeYourFortune\MakeYourFortune.csproj", "{E2DD352C-F493-4E78-A1BC-11BFD8DDF15D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FortuneTest", "FortuneTest\FortuneTest.csproj", "{C04C9E1C-C1CA-486D-AF02-02BDDF96411D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E2DD352C-F493-4E78-A1BC-11BFD8DDF15D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E2DD352C-F493-4E78-A1BC-11BFD8DDF15D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E2DD352C-F493-4E78-A1BC-11BFD8DDF15D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E2DD352C-F493-4E78-A1BC-11BFD8DDF15D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C04C9E1C-C1CA-486D-AF02-02BDDF96411D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C04C9E1C-C1CA-486D-AF02-02BDDF96411D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C04C9E1C-C1CA-486D-AF02-02BDDF96411D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C04C9E1C-C1CA-486D-AF02-02BDDF96411D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
