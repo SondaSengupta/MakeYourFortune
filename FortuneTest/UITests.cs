@@ -5,49 +5,62 @@ using TestStack.White;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
+using TestStack.BDDfy;
 
 namespace FortuneTest
 {
-    [TestClass]
+
+   [TestClass]
     public class UITests
     {
-        private static TestContext test_context;
+
+        //private static TestContext test_context;
         private static Window window;
         private static Application application;
 
+
+        private static TextBox text_box;
+        private static Label output_label;
+        private static Button submit_button;
+
+        private static Button career_button;
+        private static Button health_button;
+        private static Button relationship_button;
+        private static Button life_button;
+
         [ClassInitialize]
-        public static void Setup(TestContext _context)
+        public static void Setup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _context)
         {
-            test_context = _context;
             var applicationDir = _context.DeploymentDirectory;
-            var applicationPath = Path.Combine(applicationDir, "..\\..\\..\\FortuneTest\\bin\\Debug\\FortuneTest");
+            var applicationPath = Path.Combine(applicationDir, "..\\..\\..\\FortuneTest\\bin\\Debug\\MakeYourFortune");
             application = Application.Launch(applicationPath);
             window = application.GetWindow("MainWindow", InitializeOption.NoCache);
 
+            text_box = window.Get<TextBox>("FortuneMakerTextBox");
+            output_label = window.Get<Label>("FortuneOutput");
+            submit_button = window.Get<Button>("SubmitButton");
+
+            career_button = window.Get<Button>("CareerButton");
+            health_button = window.Get<Button>("HealthButton");
+            relationship_button = window.Get<Button>("RelationshipButton");
+            life_button = window.Get<Button>("LifeButton");
+
         }
-        [TestMethod]
-        public void TestZeroState()
+
+        //As a User
+    
+        void WhenTextBoxisClicked()
         {
-            TextBox text_box = window.Get<TextBox>("FortuneMakerTextBox");
-            Label output_label = window.Get<Label>("FortuneOutput");
-            Button submit_button = window.Get<Button>("SubmitButton");
-            
+            System.Threading.Thread.Sleep(500); // So we can see it
+            text_box.Click();
+            System.Threading.Thread.Sleep(500); // So we can see it
+            Assert.AreEqual("", text_box.Text);
+        }
 
-            Button career_button = window.Get<Button>("CareerButton");
-            Button health_button = window.Get<Button>("HealthButton");
-            Button relationship_button = window.Get<Button>("RelationshipButton");
-            Button life_button = window.Get<Button>("LifeButton");
-
-            Assert.IsTrue(text_box.Enabled);
-            Assert.AreEqual(text_box.Text, "Enter your favorite fortune here...");
-            Assert.IsFalse(submit_button.Enabled);
-
-            Assert.AreEqual(output_label.Text, "Select your Fortune");
-            Assert.IsTrue(career_button.Enabled);
-            Assert.IsTrue(health_button.Enabled);
-            Assert.IsTrue(relationship_button.Enabled);
-            Assert.IsTrue(life_button.Enabled);
-
+        [TestMethod]
+        public void ExecuteStoryTest()
+        {
+            this.BDDfy();
         }
 
         [ClassCleanup]
@@ -58,3 +71,6 @@ namespace FortuneTest
         }
     }
 }
+
+
+

@@ -24,5 +24,15 @@ namespace MakeYourFortune
         {
             InitializeComponent();
         }
+
+        private void TextboxEnter(object sender, RoutedEventArgs e)
+        {
+            FortuneMakerTextBox.Text = "";
+        }
+
+        private void LifeButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

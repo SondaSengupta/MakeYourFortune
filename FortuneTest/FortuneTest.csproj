@@ -60,10 +60,17 @@
   </Choose>
   <ItemGroup>
     <Compile Include="UITests.cs" />
+    <Compile Include="ZeroState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MakeYourFortune\MakeYourFortune.csproj">
+      <Project>{e2dd352c-f493-4e78-a1bc-11bfd8ddf15d}</Project>
+      <Name>MakeYourFortune</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

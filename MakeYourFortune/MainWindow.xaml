@@ -5,24 +5,22 @@
     <Grid>
         <Canvas Margin="10,0,-10,0">
             <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="70" Canvas.Top="10">
-            <TextBox  x:Name="FortuneMakerTextBox" Height="23" Canvas.Left="35" TextWrapping="Wrap" Text="Enter your favorite fortune here..." Canvas.Top="27" Width="232"/>
+            <TextBox  x:Name="FortuneMakerTextBox" Height="23" Canvas.Left="35" TextWrapping="Wrap" Text="Enter your favorite fortune here..." Canvas.Top="27" Width="232" MouseEnter="TextboxEnter"/>
                 <ComboBox Text="Fortune Types" Name="CategorySubmit" Canvas.Left="294" Canvas.Top="27" Width="82">
                     <ComboBoxItem Name="cbCareer">Career</ComboBoxItem>
                     <ComboBoxItem Name="cbHealth">Health</ComboBoxItem>
                     <ComboBoxItem Name="cbRelationships">Relationships</ComboBoxItem>
                     <ComboBoxItem Name="cbLife">Life</ComboBoxItem>
                 </ComboBox>
-                <Button x:Name="SubmitButton" Content="Submit" Canvas.Left="398" Canvas.Top="28" Width="75"/>
+                <Button x:Name="SubmitButton" IsEnabled="False" Content="Submit" Canvas.Left="398" Canvas.Top="28" Width="75"/>
             </StackPanel>
             <Label Name="FortuneOutput" HorizontalAlignment="Center" Canvas.Left="83" Canvas.Top="235" Width="330">Select your Fortune</Label>
             <StackPanel Canvas.Left="83" Canvas.Top="266" Width="361" Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
                 <Button x:Name="CareerButton" Content="Career" Margin="0, 0, 10, 0" Canvas.Left="81" Canvas.Top="255" Width="75" IsDefault="True"/>
                 <Button x:Name="RelationshipButton" Content="Relationship" Margin="0, 0, 10, 0" Canvas.Left="175" Canvas.Top="255" Width="75"/>
                 <Button x:Name="HealthButton" Content="Health" Margin="0, 0, 10, 0" Canvas.Left="270" Canvas.Top="255" Width="75"/>
-                <Button x:Name="LifeButton" Content="Life" Margin="0, 0, 10, 0" Canvas.Left="373" Canvas.Top="255" Width="75"/>
+                <Button x:Name="LifeButton" Content="Life" Margin="0, 0, 10, 0" Canvas.Left="373" Canvas.Top="255" Width="75" Click="LifeButton_Click"/>
             </StackPanel>
-
-
         </Canvas>
     </Grid>
 </Window>
