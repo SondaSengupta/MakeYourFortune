@@ -15,7 +15,7 @@ namespace FortuneTest
     {
 
         [TestMethod]
-        public void AddingFortuneScenario()
+        public void ScenarioAddingAFortune()
         {
             WhenTextBoxisClicked();
             ThenIShouldSeetheTextBoxClear();
@@ -28,7 +28,7 @@ namespace FortuneTest
         }
 
        [TestMethod]
-       public void GettingRandomFortuneScenario()
+       public void ScenarioGetFortuneFromCategory()
         {
            AndIClick("Relationships");
            ThenIShouldSeetheTextBlockwithFortune();

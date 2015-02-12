@@ -8,6 +8,13 @@ namespace FortuneTest
     public class FortuneItemModelTest
     {
         [TestMethod]
+        public void CreatingAFortuneStoresthatFortune()
+        {
+            FortuneItem prosper = new FortuneItem("Live well and prosper", "Career"); 
+        }
+
+
+        [TestMethod]
         public void CreatingFortuneStoresitsProperties()
         {
             FortuneItem kidnapped = new FortuneItem("Help! I'm being forced to work in a Chinese Bakery", "Relationships");

@@ -62,6 +62,7 @@
     <Compile Include="TestHelper.cs" />
     <Compile Include="UITests.cs" />
     <Compile Include="FortuneItemModelTest.cs" />
+    <Compile Include="FortuneRepositoryTest.cs" />
     <Compile Include="ZeroState.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
