@@ -11,7 +11,7 @@ namespace MakeYourFortune.Repository
     {
         int GetCount();
         void Add(FortuneItem F); 
-        void Delete(FortuneItem F); 
+        void Delete(int FortuneId); 
         void Clear();
         void Dispose();
     }

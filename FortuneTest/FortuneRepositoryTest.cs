@@ -1,10 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MakeYourFortune;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using MakeYourFortune.Repository;
 using MakeYourFortune.Model;
-using System.Text;
-using System.Collections.Generic;
 
 
 namespace FortuneTest

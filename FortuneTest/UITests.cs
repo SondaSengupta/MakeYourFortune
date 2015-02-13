@@ -13,6 +13,23 @@ namespace FortuneTest
    [TestClass]
     public class UITests : UITestHelper
     {
+        [ClassInitialize]
+        public static void SetupTests(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _context)
+        {
+            UITestHelper.Setup(_context);
+        }
+
+        [TestInitialize]
+        public void SetupTests()
+        {
+            UITestHelper.TestPrep();
+        }
+
+        [TestCleanup]
+        public void CleanUp()
+        {
+            UITestHelper.TearDown();
+        }
 
         [TestMethod]
         public void ScenarioAddingAFortune()

@@ -5,6 +5,9 @@ using TestStack.White;
 using TestStack.White.Factory;
 using TestStack.White.UIItems;
 using TestStack.White.UIItems.WindowItems;
+using MakeYourFortune.Model;
+using MakeYourFortune.Repository;
+using MakeYourFortune;
 
 namespace FortuneTest
 {
@@ -12,6 +15,10 @@ namespace FortuneTest
     {
         private static Window window;
         private static Application application;
+        private static String applicationPath;
+        private static TestContext test_context;
+        private static FortuneContext context;
+        private static FortuneRepository repo = new FortuneRepository();
 
 
         private static TextBox text_box;
@@ -24,12 +31,10 @@ namespace FortuneTest
         private static Button life_button;
 
         [ClassInitialize]
-        public static void Setup(Microsoft.VisualStudio.TestTools.UnitTesting.TestContext _context)
+        public static void Setup(TestContext _context)
         {
             var applicationDir = _context.DeploymentDirectory;
             var applicationPath = Path.Combine(applicationDir, "..\\..\\..\\FortuneTest\\bin\\Debug\\MakeYourFortune");
-            application = Application.Launch(applicationPath);
-            window = application.GetWindow("MainWindow", InitializeOption.NoCache);
 
             text_box = window.Get<TextBox>("FortuneMakerTextBox");
             output_label = window.Get<Label>("FortuneOutput");
@@ -40,6 +45,13 @@ namespace FortuneTest
             relationship_button = window.Get<Button>("RelationshipButton");
             life_button = window.Get<Button>("LifeButton");
 
+        }
+
+        public static void TestPrep()
+        {
+            application = Application.Launch(applicationPath);
+            window = application.GetWindow("MainWindow", InitializeOption.NoCache);
+            context = repo.Context();
         }
 
         public void WhenTextBoxisClicked()

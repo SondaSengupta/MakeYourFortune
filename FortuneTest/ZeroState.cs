@@ -28,7 +28,6 @@ namespace FortuneTest
         public void TestZeroState()
         {
             TextBox text_box = window.Get<TextBox>("FortuneMakerTextBox");
-            Label output_label = window.Get<Label>("FortuneOutput");
             Button submit_button = window.Get<Button>("SubmitButton");
             
 
@@ -41,7 +40,6 @@ namespace FortuneTest
             Assert.AreEqual(text_box.Text, "Enter your favorite fortune here...");
             Assert.IsFalse(submit_button.Enabled);
 
-            Assert.AreEqual(output_label.Text, "Select your Fortune");
             Assert.IsTrue(career_button.Enabled);
             Assert.IsTrue(health_button.Enabled);
             Assert.IsTrue(relationship_button.Enabled);

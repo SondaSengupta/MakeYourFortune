@@ -6,14 +6,15 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 
+
 namespace MakeYourFortune.Model
 {
     public class FortuneItem: INotifyPropertyChanged
     {
- 
+        
         public int FortuneId { get; set; }
-        public string FortuneText;
-        public string FortuneCategory;
+        public string FortuneText { get; set; }
+        public string FortuneCategory { get; set; }
 
         public FortuneItem()
         {
