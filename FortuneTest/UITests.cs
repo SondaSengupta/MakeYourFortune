@@ -39,8 +39,7 @@ namespace FortuneTest
             WhenIFillInTheTextBoxWith("Help! I've been kidnapped and forced to work in a Chinese bakery.");
             AndIChooseTheFortuneCategory("Relationships");
             AndIClick("Submit");
-            ThenIShouldSeetheTextBoxClear();
-            ThenIShouldSeetheTextBoxText("Add your fortune here...");
+            ThenIShouldSeetheTextBoxText("Enter your favorite fortune here...");
             AndtheSubmitButtonisDisabled();
         }
 

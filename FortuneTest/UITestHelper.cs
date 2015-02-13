@@ -9,6 +9,7 @@ using MakeYourFortune.Model;
 using MakeYourFortune.Repository;
 using MakeYourFortune;
 
+
 namespace FortuneTest
 {
     public class UITestHelper
@@ -34,7 +35,14 @@ namespace FortuneTest
         public static void Setup(TestContext _context)
         {
             var applicationDir = _context.DeploymentDirectory;
-            var applicationPath = Path.Combine(applicationDir, "..\\..\\..\\FortuneTest\\bin\\Debug\\MakeYourFortune");
+            applicationPath = Path.Combine(applicationDir, "..\\..\\..\\FortuneTest\\bin\\Debug\\MakeYourFortune");
+        }
+
+        public static void TestPrep()
+        {
+            application = Application.Launch(applicationPath);
+            window = application.GetWindow("MainWindow", InitializeOption.NoCache);
+            context = repo.Context();
 
             text_box = window.Get<TextBox>("FortuneMakerTextBox");
             output_label = window.Get<Label>("FortuneOutput");
@@ -44,14 +52,6 @@ namespace FortuneTest
             health_button = window.Get<Button>("HealthButton");
             relationship_button = window.Get<Button>("RelationshipButton");
             life_button = window.Get<Button>("LifeButton");
-
-        }
-
-        public static void TestPrep()
-        {
-            application = Application.Launch(applicationPath);
-            window = application.GetWindow("MainWindow", InitializeOption.NoCache);
-            context = repo.Context();
         }
 
         public void WhenTextBoxisClicked()
@@ -64,32 +64,35 @@ namespace FortuneTest
 
         public void ThenIShouldSeetheTextBoxClear()
         {
-            throw new NotImplementedException();
+            Assert.AreEqual("", text_box.Text); 
         }
 
-        public void WhenIFillInTheTextBoxWith(string p)
+        public void WhenIFillInTheTextBoxWith(string value)
         {
-            throw new NotImplementedException();
+            text_box.SetValue(value);
+            System.Threading.Thread.Sleep(500);
         }
 
-        public void AndIChooseTheFortuneCategory(string p)
+        public void AndIChooseTheFortuneCategory(string category)
         {
-            throw new NotImplementedException();
+           
+           var combobox = window.Get<TestStack.White.UIItems.ListBoxItems.ComboBox>("FortuneCategory");
+           combobox.SetValue(category);
         }
 
-        public void AndIClick(string p)
+        public void AndIClick(string WindowItem)
         {
-            throw new NotImplementedException();
+            submit_button.Click();
         }
 
         public void ThenIShouldSeetheTextBoxText(string p)
         {
-            throw new NotImplementedException();
+            Assert.AreEqual(p, text_box.Text); 
         }
 
         public void AndtheSubmitButtonisDisabled()
         {
-            throw new NotImplementedException();
+            Assert.IsFalse(submit_button.Enabled);
         }
 
         //Getting Random Fortune Scenario Helper Methods

@@ -12,7 +12,7 @@ namespace MakeYourFortune.Model
     public class FortuneItem: INotifyPropertyChanged
     {
         
-        public int FortuneId { get; set; }
+        public int FortuneItemId { get; set; }
         public string FortuneText { get; set; }
         public string FortuneCategory { get; set; }
 

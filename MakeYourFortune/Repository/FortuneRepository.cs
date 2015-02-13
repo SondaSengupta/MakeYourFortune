@@ -23,17 +23,19 @@ namespace MakeYourFortune.Repository
 
         public int GetCount()
         {
-            throw new NotImplementedException();
+            return _dbContext.Fortunes.Count<Model.FortuneItem>();
         }
 
         public void Add(Model.FortuneItem F)
         {
-            throw new NotImplementedException();
+            _dbContext.Fortunes.Add(F);
+            _dbContext.SaveChanges();
         }
 
-        public void Delete(int FortuneId)
+        public void Delete(Model.FortuneItem F)
         {
-            throw new NotImplementedException();
+            _dbContext.Fortunes.Remove(F);
+            _dbContext.SaveChanges();
         }
 
         public void Clear()
@@ -44,9 +46,17 @@ namespace MakeYourFortune.Repository
             _dbContext.SaveChanges();
         }
 
+        public string GetByCategory(string category)
+        {
+            var query = from Fortunes in _dbContext.Fortunes
+                        where Fortunes.FortuneCategory == category
+                        select Fortunes;
+            return query.First<Model.FortuneItem>().FortuneText;
+        }
+
         public void Dispose()
         {
-            throw new NotImplementedException();
+            _dbContext.Dispose();
         }
     }
 }
