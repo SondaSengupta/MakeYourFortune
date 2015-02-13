@@ -11,7 +11,7 @@ namespace FortuneTest
 {
 
    [TestClass]
-    public class UITests : TestHelper
+    public class UITests : UITestHelper
     {
 
         [TestMethod]

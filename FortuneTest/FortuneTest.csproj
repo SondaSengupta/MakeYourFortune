@@ -59,7 +59,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="TestHelper.cs" />
+    <Compile Include="UITestHelper.cs" />
     <Compile Include="UITests.cs" />
     <Compile Include="FortuneItemModelTest.cs" />
     <Compile Include="FortuneRepositoryTest.cs" />

@@ -31,25 +31,36 @@ namespace FortuneTest
        [TestMethod]
         public void DatabaseAddItem()
         {
-            throw new NotImplementedException();
+            Assert.AreEqual(0, repo.GetCount());
+            repo.Add(new FortuneItem("You will be given a great deal of hugs.", "Relationships"));
+            Assert.AreEqual(1, repo.GetCount());
         }
 
        [TestMethod]
        public void DatabaseGetCount()
        {
-           throw new NotImplementedException();
+           repo.Add(new FortuneItem("Your job will take a turn for the worst", "Careers"));
+           repo.Add(new FortuneItem("Your significant other will break up with you", "Relationships"));
+           Assert.AreEqual(2, repo.GetCount());
        }
 
        [TestMethod]
        public void DatabaseClearAll()
        {
-           throw new NotImplementedException();
+           repo.Add(new FortuneItem("Your job will take a turn for the worst", "Careers"));
+           repo.Add(new FortuneItem("Your significant other will break up with you", "Relationships"));
+           repo.Clear();
+           Assert.AreEqual(0, repo.GetCount());
        }
 
        [TestMethod]
        public void DatabaseDeleteItem()
        {
-           throw new NotImplementedException();
+           Assert.AreEqual(0, repo.GetCount());
+           FortuneItem hugs = new FortuneItem("You will be given a great deal of hugs.", "Relationships");
+           repo.Add(hugs);
+           repo.Delete(hugs.FortuneId);
+           Assert.AreEqual(0, repo.GetCount());
        }
 
     }

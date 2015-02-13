@@ -8,7 +8,7 @@ using TestStack.White.UIItems.WindowItems;
 
 namespace FortuneTest
 {
-    public class TestHelper
+    public class UITestHelper
     {
         private static Window window;
         private static Application application;
