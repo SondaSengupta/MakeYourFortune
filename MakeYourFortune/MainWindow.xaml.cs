@@ -36,11 +36,6 @@ namespace MakeYourFortune
             FortuneMakerTextBox.Text = "";
         }
 
-        private void LifeButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void FortuneCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (FortuneMakerTextBox.Text != "" || FortuneMakerTextBox.Text != "Enter your favorite fortune here...")
@@ -53,10 +48,34 @@ namespace MakeYourFortune
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
         {
             this.textboxText = FortuneMakerTextBox.Text;
-            this.fortuneCategory = FortuneCategory.SelectedValue.ToString();
+            this.fortuneCategory = FortuneCategory.Text;
             repo.Add(new FortuneItem(textboxText, fortuneCategory));
             FortuneMakerTextBox.Text = "Enter your favorite fortune here...";
             SubmitButton.IsEnabled = false;
+        }
+
+        private void CareerButton_Click(object sender, RoutedEventArgs e)
+        {
+            string careerFortune = repo.GetByCategory("Career");
+            FortuneOutput.Text = careerFortune;
+        }
+
+        private void RelationshipButton_Click(object sender, RoutedEventArgs e)
+        {
+            string careerFortune = repo.GetByCategory("Relationships");
+            FortuneOutput.Text = careerFortune;
+        }
+
+        private void HealthButton_Click(object sender, RoutedEventArgs e)
+        {
+            string careerFortune = repo.GetByCategory("Health");
+            FortuneOutput.Text = careerFortune;
+        }
+
+        private void LifeButton_Click(object sender, RoutedEventArgs e)
+        {
+            repo.GetByCategory("Life");
+
         }
     }
 }

@@ -46,10 +46,10 @@ namespace FortuneTest
        [TestMethod]
        public void ScenarioGetFortuneFromCategory()
         {
-           AndIClick("Relationships");
+           FirstIClick("RelationshipButton");
            ThenIShouldSeetheTextBlockwithFortune();
-           AndIClick("Life");
-           ThenIShouldSeeTextboxWithFortune();
+           SecondIClick("LifeButton");
+           ThenIShouldSeeTextbox2ndWithFortune();
         }
     }
 }

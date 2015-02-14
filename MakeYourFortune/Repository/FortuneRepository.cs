@@ -51,6 +51,10 @@ namespace MakeYourFortune.Repository
             var query = from Fortunes in _dbContext.Fortunes
                         where Fortunes.FortuneCategory == category
                         select Fortunes;
+            if (!query.Any())
+            {
+                return "Sorry, no fortunes in this cookie jar today. Add one to nom on the wisdom later!";
+            }
             return query.First<Model.FortuneItem>().FortuneText;
         }
 

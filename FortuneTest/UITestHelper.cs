@@ -56,9 +56,9 @@ namespace FortuneTest
 
         public void WhenTextBoxisClicked()
         {
-            System.Threading.Thread.Sleep(500); // So we can see it
+            System.Threading.Thread.Sleep(500); // So we can see it during the test sequence
             text_box.Click();
-            System.Threading.Thread.Sleep(500); // So we can see it
+            System.Threading.Thread.Sleep(500);
             Assert.AreEqual("", text_box.Text);
         }
 
@@ -97,14 +97,33 @@ namespace FortuneTest
 
         //Getting Random Fortune Scenario Helper Methods
 
+        public void FirstIClick(string ButtonName)
+        {
+            Button relationshipbutton = window.Get<Button>(ButtonName);
+            relationshipbutton.Click();
+        }
+        
+
         public void ThenIShouldSeetheTextBlockwithFortune()
         {
-            throw new NotImplementedException();
+            CheckOutputNotEmpty();
         }
 
-        public void ThenIShouldSeeTextboxWithFortune()
+        private static void CheckOutputNotEmpty()
         {
-            throw new NotImplementedException();
+            TextBox output = window.Get<TextBox>("FortuneOutput");
+            Assert.IsTrue(output != null || output.Text != "");
+        }
+
+        public void SecondIClick(string ButtonName)
+        {
+            Button lifebutton = window.Get<Button>(ButtonName);
+            lifebutton.Click();
+        }
+
+        public void ThenIShouldSeeTextbox2ndWithFortune()
+        {
+            CheckOutputNotEmpty();
         }
 
         [ClassCleanup]
