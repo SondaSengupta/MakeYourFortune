@@ -10,6 +10,7 @@ namespace MakeYourFortune.Repository
     public class FortuneRepository: IFortuneRepository
     {
         private FortuneContext _dbContext;  //declares db field
+        private IQueryable<Model.FortuneItem> query;
 
         public FortuneRepository()
         {
@@ -48,14 +49,35 @@ namespace MakeYourFortune.Repository
 
         public string GetByCategory(string category)
         {
-            var query = from Fortunes in _dbContext.Fortunes
-                        where Fortunes.FortuneCategory == category
-                        select Fortunes;
-            if (!query.Any())
+            var queryied = QueryByCategory(category);
+            if (!queryied.Any())
             {
                 return "Sorry, no fortunes in this cookie jar today. Add one to nom on the wisdom later!";
             }
-            return query.First<Model.FortuneItem>().FortuneText;
+            return GetRandomFortune(queryied);
+        }
+
+        private IQueryable<Model.FortuneItem> QueryByCategory(string category)
+        {
+          
+            if (category == "Life")
+            {
+               query = from Fortunes in _dbContext.Fortunes
+                            select Fortunes;
+                return query;
+            }
+            query = from Fortunes in _dbContext.Fortunes
+                        where Fortunes.FortuneCategory == category
+                        select Fortunes;
+            return query;
+        }
+
+        private static string GetRandomFortune(IQueryable<Model.FortuneItem> queryied)
+        {
+            Random number = new Random();
+            var queryList = queryied.ToList();
+            int num = number.Next(queryList.Count());
+            return queryList.ElementAt(num).FortuneText;
         }
 
         public void Dispose()
