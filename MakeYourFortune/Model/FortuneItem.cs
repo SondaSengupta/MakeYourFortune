@@ -26,7 +26,6 @@ namespace MakeYourFortune.Model
             this.FortuneText = FortuneText;
             this.FortuneCategory = FortuneCategory;
         }
-
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }

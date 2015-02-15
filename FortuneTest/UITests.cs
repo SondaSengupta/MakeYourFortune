@@ -47,9 +47,10 @@ namespace FortuneTest
        public void ScenarioGetFortuneFromCategory()
         {
            FirstIClick("RelationshipButton");
-           ThenIShouldSeetheTextBlockwithFortune();
            SecondIClick("LifeButton");
-           ThenIShouldSeeTextbox2ndWithFortune();
+           ThirdIClick("HealthButton");
+           FourthIClick("CareerButton");
+
         }
     }
 }

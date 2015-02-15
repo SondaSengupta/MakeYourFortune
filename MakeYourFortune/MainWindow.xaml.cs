@@ -15,6 +15,8 @@ using System.Windows.Shapes;
 using MakeYourFortune.Repository;
 using MakeYourFortune.Model;
 
+
+
 namespace MakeYourFortune
 {
     /// <summary>
@@ -28,7 +30,7 @@ namespace MakeYourFortune
         public MainWindow()
         {
             InitializeComponent();
-            SubmitButton.DataContext = repo.Context().Fortunes.Local;
+            FortuneList.DataContext = repo.Context().Fortunes.Local;
         }
 
         private void TextboxEnter(object sender, RoutedEventArgs e)
@@ -38,11 +40,14 @@ namespace MakeYourFortune
 
         private void FortuneCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (FortuneMakerTextBox.Text != "" || FortuneMakerTextBox.Text != "Enter your favorite fortune here...")
+            if (FortuneMakerTextBox.Text != "" || 
+                FortuneMakerTextBox.Text != "Enter your favorite fortune here..." ||
+                FortuneMakerTextBox.Text != null)
             {
                 SubmitButton.IsEnabled = true;
 
             }
+  
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
@@ -52,30 +57,60 @@ namespace MakeYourFortune
             repo.Add(new FortuneItem(textboxText, fortuneCategory));
             FortuneMakerTextBox.Text = "Enter your favorite fortune here...";
             SubmitButton.IsEnabled = false;
+            FortuneCategory.Text = null;
         }
 
         private void CareerButton_Click(object sender, RoutedEventArgs e)
         {
+            
             string careerFortune = repo.GetByCategory("Career");
             FortuneOutput.Text = careerFortune;
+            CookieMove();
         }
 
         private void RelationshipButton_Click(object sender, RoutedEventArgs e)
         {
-            string careerFortune = repo.GetByCategory("Relationships");
-            FortuneOutput.Text = careerFortune;
+            string relationshipFortune = repo.GetByCategory("Relationships");
+            FortuneOutput.Text = relationshipFortune;
+            CookieMove();
+            
         }
 
         private void HealthButton_Click(object sender, RoutedEventArgs e)
         {
-            string careerFortune = repo.GetByCategory("Health");
-            FortuneOutput.Text = careerFortune;
+            string healthFortune = repo.GetByCategory("Health");
+            FortuneOutput.Text = healthFortune;
+            CookieMove();
         }
 
         private void LifeButton_Click(object sender, RoutedEventArgs e)
         {
-            repo.GetByCategory("Life");
+            string lifeFortune = repo.GetByCategory("Life");
+            FortuneOutput.Text = lifeFortune;
+            CookieMove();
 
+        }
+
+        private void CookieMove()
+        {
+            Canvas.SetLeft(LeftCookieIMG, 143);
+            Canvas.SetLeft(RightCookieIMG, 220);
+            Canvas.SetLeft(LeftCookieIMG, 2);
+            Canvas.SetLeft(RightCookieIMG, 400);
+        }
+
+        private void ShowList_Click(object sender, RoutedEventArgs e)
+        {
+            FortuneList.Visibility = Visibility.Visible;
+            ShowList.Visibility = Visibility.Collapsed;
+            HideList.Visibility = Visibility.Visible;
+        }
+
+        private void HideList_Click(object sender, RoutedEventArgs e)
+        {
+            FortuneList.Visibility = Visibility.Collapsed;
+            ShowList.Visibility = Visibility.Visible;
+            HideList.Visibility = Visibility.Collapsed;
         }
     }
 }

@@ -23,7 +23,6 @@ namespace FortuneTest
 
 
         private static TextBox text_box;
-        private static Label output_label;
         private static Button submit_button;
 
         private static Button career_button;
@@ -41,11 +40,10 @@ namespace FortuneTest
         public static void TestPrep()
         {
             application = Application.Launch(applicationPath);
-            window = application.GetWindow("MainWindow", InitializeOption.NoCache);
+            window = application.GetWindow("Make_Your_Fortune", InitializeOption.NoCache);
             context = repo.Context();
 
             text_box = window.Get<TextBox>("FortuneMakerTextBox");
-            output_label = window.Get<Label>("FortuneOutput");
             submit_button = window.Get<Button>("SubmitButton");
 
             career_button = window.Get<Button>("CareerButton");
@@ -54,6 +52,8 @@ namespace FortuneTest
             life_button = window.Get<Button>("LifeButton");
         }
 
+        //ScenarioAddingFortune Helper Methods
+        
         public void WhenTextBoxisClicked()
         {
             System.Threading.Thread.Sleep(500); // So we can see it during the test sequence
@@ -95,35 +95,33 @@ namespace FortuneTest
             Assert.IsFalse(submit_button.Enabled);
         }
 
-        //Getting Random Fortune Scenario Helper Methods
+        //ScenarioGetFortuneFromCategory Helper Methods
 
         public void FirstIClick(string ButtonName)
         {
-            Button relationshipbutton = window.Get<Button>(ButtonName);
-            relationshipbutton.Click();
-        }
-        
-
-        public void ThenIShouldSeetheTextBlockwithFortune()
-        {
-            CheckOutputNotEmpty();
-        }
-
-        private static void CheckOutputNotEmpty()
-        {
-            TextBox output = window.Get<TextBox>("FortuneOutput");
-            Assert.IsTrue(output != null || output.Text != "");
+            ClickthatButton(ButtonName);
         }
 
         public void SecondIClick(string ButtonName)
         {
-            Button lifebutton = window.Get<Button>(ButtonName);
-            lifebutton.Click();
+            ClickthatButton(ButtonName);
         }
 
-        public void ThenIShouldSeeTextbox2ndWithFortune()
+        public void FourthIClick(string ButtonName)
         {
-            CheckOutputNotEmpty();
+            ClickthatButton(ButtonName);
+        }
+
+        public void ThirdIClick(string ButtonName)
+        {
+            ClickthatButton(ButtonName);
+        }
+
+        private static void ClickthatButton(string ButtonName)
+        {
+            Button fortunebutton = window.Get<Button>(ButtonName);
+            fortunebutton.Click();
+            System.Threading.Thread.Sleep(500);
         }
 
         [ClassCleanup]
