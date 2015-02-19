@@ -40,14 +40,22 @@ namespace MakeYourFortune
 
         private void FortuneCategory_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (FortuneMakerTextBox.Text != "" || 
-                FortuneMakerTextBox.Text != "Enter your favorite fortune here..." ||
-                FortuneMakerTextBox.Text != null)
+            ChecktoEnableSubmit();
+  
+        }
+
+        private void ChecktoEnableSubmit()
+        {
+            if (FortuneMakerTextBox.Text == "" || FortuneMakerTextBox.Text == "Enter your favorite fortune here...")
             {
-                SubmitButton.IsEnabled = true;
+                SubmitButton.IsEnabled = false;
 
             }
-  
+
+            else
+            {
+                SubmitButton.IsEnabled = true;
+            }
         }
 
         private void SubmitButton_Click(object sender, RoutedEventArgs e)
