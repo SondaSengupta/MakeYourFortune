@@ -68,19 +68,26 @@ namespace MakeYourFortune
             FortuneCategory.Text = null;
         }
 
+        private void FortuneOutputVisibility()
+        {
+            FortuneOutput.Visibility = Visibility.Visible;
+        }
+
         private void CareerButton_Click(object sender, RoutedEventArgs e)
         {
             
             string careerFortune = repo.GetByCategory("Career");
             FortuneOutput.Text = careerFortune;
-            CookieMove();
+            CookieMoveOut();
+            FortuneOutputVisibility();
         }
 
         private void RelationshipButton_Click(object sender, RoutedEventArgs e)
         {
             string relationshipFortune = repo.GetByCategory("Relationships");
             FortuneOutput.Text = relationshipFortune;
-            CookieMove();
+            CookieMoveOut();
+            FortuneOutputVisibility();
             
         }
 
@@ -88,21 +95,29 @@ namespace MakeYourFortune
         {
             string healthFortune = repo.GetByCategory("Health");
             FortuneOutput.Text = healthFortune;
-            CookieMove();
+            CookieMoveOut();
+            FortuneOutputVisibility();
         }
 
         private void LifeButton_Click(object sender, RoutedEventArgs e)
         {
             string lifeFortune = repo.GetByCategory("Life");
             FortuneOutput.Text = lifeFortune;
-            CookieMove();
+            CookieMoveOut();
+            FortuneOutputVisibility();
 
         }
 
-        private void CookieMove()
+        //143 and 220
+        private void CookieMoveIn()
         {
             Canvas.SetLeft(LeftCookieIMG, 143);
             Canvas.SetLeft(RightCookieIMG, 220);
+            FortuneOutput.Visibility = Visibility.Hidden;
+        }
+
+        private void CookieMoveOut()
+        {
             Canvas.SetLeft(LeftCookieIMG, 2);
             Canvas.SetLeft(RightCookieIMG, 400);
         }
@@ -119,6 +134,11 @@ namespace MakeYourFortune
             FortuneList.Visibility = Visibility.Collapsed;
             ShowList.Visibility = Visibility.Visible;
             HideList.Visibility = Visibility.Collapsed;
+        }
+
+        private void CloseCookie_Click(object sender, RoutedEventArgs e)
+        {
+            CookieMoveIn();
         }
     }
 }

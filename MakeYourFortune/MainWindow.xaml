@@ -4,7 +4,7 @@
         Title="Make_Your_Fortune" Height="528" Width="510.778">
     <Canvas Background="#FF610000" Margin="-2,0,-8,-204">
         <Rectangle Fill="#FFF4F4F5" Height="136" Stroke="Black" Canvas.Top="94" Width="513"/>
-        <TextBlock x:Name="FortuneOutput" Canvas.Left="83" TextAlignment="Center" TextWrapping="Wrap" Canvas.Top="151" Height="37" Width="330" FontFamily="Segoe Script" FontWeight="Bold" Foreground="#FF230303" Background="#FFDEDDDD"/>
+        <TextBlock x:Name="FortuneOutput" Canvas.Left="83" Visibility="Hidden" TextAlignment="Center" TextWrapping="Wrap" Canvas.Top="151" Height="37" Width="330" FontFamily="Segoe Script" FontWeight="Bold" Foreground="#FF230303" Background="#FFDEDDDD"/>
         <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Center" Canvas.Left="10" Canvas.Top="30">
             <TextBox  x:Name="FortuneMakerTextBox" Height="32" TextWrapping="Wrap" Text="Enter your favorite fortune here..." Width="301" MouseEnter="TextboxEnter"/>
             <ComboBox Text="FortuneCategory" x:Name="FortuneCategory" Width="103" SelectionChanged="FortuneCategory_SelectionChanged">
@@ -34,5 +34,6 @@
         <Button x:Name="HideList" Visibility ="Collapsed" Content="Hide List of Saved Fortunes" Canvas.Left="83" Canvas.Top="291" Width="330" Click="HideList_Click"/>
         <Image Visibility="Visible" Source="img/LeftFortuneCookie.jpg" x:Name="LeftCookieIMG" Height="100" Canvas.Left="143" Canvas.Top="124" Width="100"/>
         <Image Visibility="Visible" Source="img/RightFortuneCookie.jpg" x:Name="RightCookieIMG" Height="100" Canvas.Left="220" Canvas.Top="124" Width="100"/>
+        <Button x:Name="CloseCookie" Content="Reform Cookie" Canvas.Left="379" Canvas.Top="101" Width="110" Click="CloseCookie_Click" Background="#FF610000" Foreground="#FFF3EAEA" FontFamily="Segoe Script"/>
     </Canvas>
 </Window>
