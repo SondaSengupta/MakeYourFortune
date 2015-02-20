@@ -27,10 +27,24 @@ namespace MakeYourFortune
         public static FortuneRepository repo = new FortuneRepository();
         private string textboxText;
         private string fortuneCategory;
+        private Visibility _DeleteButtonVisible;
+        public Visibility DeleteButtonVisible
+        {
+            get
+            {
+                return _DeleteButtonVisible;
+            }
+            set
+            {
+                _DeleteButtonVisible = value;
+            }
+
+        }
         public MainWindow()
         {
             InitializeComponent();
             FortuneList.DataContext = repo.Context().Fortunes.Local;
+            DeleteButtonVisible = Visibility.Hidden;
         }
 
         private void TextboxEnter(object sender, RoutedEventArgs e)
@@ -127,6 +141,7 @@ namespace MakeYourFortune
             FortuneList.Visibility = Visibility.Visible;
             ShowList.Visibility = Visibility.Collapsed;
             HideList.Visibility = Visibility.Visible;
+            DeleteButtonVisible = Visibility.Hidden;
         }
 
         private void HideList_Click(object sender, RoutedEventArgs e)
@@ -140,5 +155,39 @@ namespace MakeYourFortune
         {
             CookieMoveIn();
         }
+
+
+        public object curItem
+        {
+            get
+            {
+                return FortuneList.SelectedItem;
+            }
+            set
+            {
+                this.FortuneList.SelectedItem = value;
+            }
+        }
+
+        private void FortuneList_Focus(object sender, SelectionChangedEventArgs e)
+        {
+            DeleteButtonVisible = Visibility.Hidden;
+            curItem = FortuneList.SelectedItem;
+            
+        }
+
+        private void Delete_Click(object sender, RoutedEventArgs e)
+        {
+            repo.Delete(curItem as FortuneItem);
+
+        }
+
+        private void SaveChange_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        
+
+        
     }
 }
